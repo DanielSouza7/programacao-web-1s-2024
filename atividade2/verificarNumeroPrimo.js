@@ -7,7 +7,7 @@ function verificarNumeroPrimo(n){
         return false;
     }
     
-    // Loop para verificar se o número não é primo
+    // Loop para verificar se o número não é primo usando o crivo de Eratóstenes
     for (let x = 2; x <= Math.sqrt(n); x++) {
         if (n % x === 0) {
             return false;
