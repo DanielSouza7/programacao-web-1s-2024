@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@product</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <!-- NavBar -->
+    <nav class="navbar navbar-light bg-light p-3">
+        <div class="d-flex col-3 flex-wrap flex-md-nowrap justify-content-between">
+            <a class="navbar-brand" href="#">
+                VENDEDOR TOP
+            </a>
+        </div>
+        <div class="col-6">
+            <input class="form-control form-control-dark" type="text" placeholder="Buscar" aria-label="Buscar">
+        </div>
+        <div class="col-3 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+            <a class="btn btn-secondary" href="">Configurações</a>
+            <a class="btn btn-link" href="/sair">Sair</a> <!-- Sair da Aplicação -->
+        </div>
+    </nav>
+    
+    
+    <div class="container-fluid">
+        <div class="row">
+            
+            <!-- NavBar lateral-->
+            <nav id="sidebar" class="col-3 d-md-block bg-light sidebar">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-home">
+                                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                </svg>
+                                <span class="ml-2">Lista de produtos</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-trash-2">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path d="M19 6l-1.83 12.14A2 2 0 0 1 15.17 20H8.83a2 2 0 0 1-1.99-1.86L5 6"></path>
+                                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                                </svg>
+                                <span class="ml-2">Excluir produto</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            
+            <main class="col-9 offset-3 ml-sm-auto px-md-4 py-4">
+                <form action="/cadastrar_produto" method="post">
+                    <div class="row mt-3 mb-5">
+                        <h5>Novo Produto</h5>
+                        <div class="col-12">
+                            <div class="mt-1">
+                                <label for="nome" class="form-label">Nome:</label>
+                                <input type="text" class="form-control" id="nome" name="nome">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mt-1">
+                                <label for="descricao" class="form-label">Descrição:</label>
+                                <textarea class="form-control" rows="3" id="descricao" name="descricao"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mt-1">
+                                <label for="preco" class="form-label">Preço:</label>
+                                <input type="number" step="0.01" class="form-control" id="preco" name="preco">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mt-1">
+                                <label for="quantidade" class="form-label">Quantidade:</label>
+                                <input type="number" class="form-control" id="quantidade" name="quantidade">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mt-1">
+                                <label for="categoria" class="form-label">Categoria:</label>
+                                <input type="text" class="form-control" id="categoria" name="categoria">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 mt-2">Adicionar</button>
+                    </div>
+                </form>
+
+                <!-- Mostra Produtos Cadastrados -->
+                <div class="row my-4">
+                    
+                    {{#produtos}}
+                    <div class="col-3 mt-3">
+                        <div class="card">
+                            <h5 class="card-header {{estilo}}">{{nome}}</h5>
+                            <div class="card-body">
+                                <h3 class="card-title">{{categoria}}</h3>
+                                <p class="card-text">Preço: R$ {{preco}}</p>
+                                <p class="card-text">Quantidade: {{quantidade}}</p>
+                                <p class="card-text">Descrição: {{descricao}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{/produtos}}
+                </div>
+                
+                <!-- Rodapé -->
+                <footer class="pt-5 d-flex justify-content-between">
+                    <span>© 2023</span>
+                    <ul class="nav m-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" aria-current="page" href="#">Política de privacidade</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="#">Termos de uso</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="#">Contato</a>
+                        </li>
+                    </ul>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
