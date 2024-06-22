@@ -1,0 +1,88 @@
+/* Colocando fonte própria no site */
+@font-face {
+    font-family: KGBlank;
+    src: url('KGBlankSpaceSolid.ttf')
+}
+
+/* Section */
+.secao {
+    background-color: #FFDA78;
+    background-image: url('bg.png');
+    background-size: 20% auto;
+    font-family: KGBlank;
+    font-size: 18px;
+}
+
+/* Organizando a Section*/
+.welcome-section {
+    width: 33%;
+    text-align: center;
+    padding: 20px;
+}
+.form-section {
+    width: 67%;
+    padding: 20px;
+}
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.form-group div {
+    flex: 1;
+    margin-right: 10px;
+}
+.form-group div:last-child {
+    margin-right: 0;
+}
+
+/* Rodapé */
+.rodape {
+    background-color: #003285;
+    font-family: KGBlank;
+    font-size: 15px;
+    margin-top: -50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Cabeçalho */
+.navbar {
+    background-color: #003285;
+}
+@media (min-width: 767.98px) {
+    .navbar {
+        top: 0;
+        position: sticky;
+        z-index: 999;
+        color: #FF7F3E;
+    }
+}
+.navbar-nav {
+    color: #FF7F3E;
+}
+
+/* Cards */
+.card {
+    text-align: center;
+}
+
+/* Organizar tamanho da página */
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}

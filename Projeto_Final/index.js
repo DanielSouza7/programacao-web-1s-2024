@@ -20,18 +20,13 @@ app.use(session({
     saveUninitialized: false
 }));
 
-// DUVIDA PROFESSOR!!!!
-app.get('/cadastrar_usuario', function (req, res) {
-    res.render('cadastrar_usuario.html');
-});
-app.get('/index', function (req, res) {
-    res.render('index.html');
+// Middleware para adicionar o usuário à resposta local
+app.use((req, res, next) => {
+    res.locals.usuario = req.session.usuario || null;
+    next();
 });
 
-
-
-
-// Define as rotas da aplicação (declaradas na pasta /src/routes/)
+// Rotas da aplicação
 app.use('/', require('./src/routes/produtoRoutes'));
 app.use('/', require('./src/routes/usuarioRoutes'));
 app.use('/', require('./src/routes/autenticacaoRoutes'));

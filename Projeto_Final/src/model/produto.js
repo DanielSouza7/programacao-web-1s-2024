@@ -45,6 +45,11 @@ const Produto = database.define('produto', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
+
+    indicador_ativo: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
 });
 
 module.exports = Produto;
